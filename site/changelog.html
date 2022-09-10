@@ -1,0 +1,1840 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"/>
+<meta name="description" content="GoJS Change Log"/><link rel="stylesheet" href="./assets/css/style.css"/> 
+<!-- Copyright 1998-2022 by Northwoods Software Corporation. -->    <title>GoJS Change Log</title>
+    <link rel="stylesheet" href="./assets/css/prism.css"  />
+  </head>
+
+  <body>
+  <nav id="navTop" class="w-full z-30 top-0 text-white bg-nwoods-primary">
+    <div class="w-full container max-w-screen-lg mx-auto flex flex-wrap sm:flex-nowrap items-center justify-between mt-0 py-2">
+      <div class="md:pl-4">
+        <a class="text-white hover:text-white no-underline hover:no-underline
+        font-bold text-2xl lg:text-4xl rounded-lg hover:bg-nwoods-secondary " href=".">
+          <h1 class="mb-0 p-1 ">GoJS</h1>
+        </a>
+      </div>
+      <button id="topnavButton" class="rounded-lg sm:hidden focus:outline-none focus:ring" aria-label="Navigation">
+        <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+          <path id="topnavOpen" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+          <path id="topnavClosed" class="hidden" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+      <div id="topnavList" class="hidden sm:block items-center w-auto mt-0 text-white p-0 z-20">
+        <ul class="list-reset list-none font-semibold flex justify-end flex-wrap sm:flex-nowrap items-center px-0 pb-0">
+          <li class="p-1 sm:p-0"><a class="topnav-link" href="./learn/">Learn</a></li>
+          <li class="p-1 sm:p-0"><a class="topnav-link" href="./samples/">Samples</a></li>
+          <li class="p-1 sm:p-0"><a class="topnav-link" href="./intro/">Intro</a></li>
+          <li class="p-1 sm:p-0"><a class="topnav-link" href="./api/">API</a></li>
+          <li class="p-1 sm:p-0"><a class="topnav-link" href="https://www.nwoods.com/products/register.html">Register</a></li>
+          <li class="p-1 sm:p-0"><a class="topnav-link" href="./download.html">Download</a></li>
+          <li class="p-1 sm:p-0"><a class="topnav-link" href="https://forum.nwoods.com/c/gojs/11">Forum</a></li>
+          <li class="p-1 sm:p-0"><a class="topnav-link" href="https://www.nwoods.com/contact.html"
+           target="_blank" rel="noopener" onclick="getOutboundLink('https://www.nwoods.com/contact.html', 'contact');">Contact</a></li>
+          <li class="p-1 sm:p-0"><a class="topnav-link" href="https://www.nwoods.com/sales/index.html"
+           target="_blank" rel="noopener" onclick="getOutboundLink('https://www.nwoods.com/sales/index.html', 'buy');">Buy</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="border-b border-gray-600 opacity-50 my-0 py-0" />
+  </nav>
+    
+    <div class="container max-w-5xl mx-auto mb-8">
+      
+      
+      <div class="pt-4 px-2 lg:px-4 pb-16 w-full overflow-hidden">
+
+<h1>GoJS Change Log</h1>
+<p id="ver"></p>
+
+<p>
+  We maintain a <a href="https://github.com/NorthwoodsSoftware/GoJS">GitHub Repository</a>,
+  which you can star to follow version updates.
+  We also notify of changes on <a href="https://twitter.com/NorthwoodsGo">Twitter</a>.
+</p>
+
+<hr>
+
+<h2 id="2.2">GoJS 2.2</h2>
+
+<p>
+  GoJS 2.2 introduces a number of properties and methods for convenience and to improve customization.
+  GoJS 2.2 also includes new methods for constructing objects, and enhances <a href="intro/typings.html">TypeScript typings support</a>.
+</p>
+<p>
+  GoJS 2.2 also includes several performance enhancements when drawing large graphs, reduced memory usage,
+  and more efficient replacing or merging of item Arrays.
+</p>
+<p>
+  Some of the samples and written documentation have been upgraded to use more modern JavaScript: <code>class</code>es,
+  arrow functions, <code>const</code> and <code>let</code>, so the samples and documentation might no longer be viewable
+  using old browsers such as Internet Explorer 11 or some old Android browsers.
+  The library and the extensions continue to target ES5 (ES2012), so that apps using the library can still work on IE11.
+</p>
+
+<h3>Method Chaining and New Ways to Build Objects</h3>
+
+<p>
+  In GoJS 2.2 many methods that previously returned <code>void</code> now return the method's instance, to promote method chaining.
+  GoJS 2.2 also introduces several new methods or arguments to allow type-checking of settings by compilers and in text editors.
+</p>
+  Several existing methods now return their instance:
+  <ul>
+    <li><a>GraphObject.setProperties</a> and <a>Diagram.setProperties</a> - and their new synonyms <a>GraphObject.attach</a> and <a>Diagram.attach</a> </li>
+    <li><a>Panel.add</a></li>
+    <li><a>GraphObject.bind</a>, which also has new functionality via method overloads.</li>
+    <li><a>GraphObject.trigger</a> - to add <a>AnimationTrigger</a>s to a GraphObject</li>
+    <li><a>Diagram.addEventListener</a>, <a>Diagram.addChangedListener</a>, <a>Diagram.addModelChangedListener</a>, <a>Model.addChangedListener</a></li>
+    <li><a>Diagram.addLayer</a>, <a>Diagram.addLayerBefore</a>, <a>Diagram.addLayerAfter</a></li>
+    <li><a>Animation.add</a>, and <a>Animation.addTemporaryPart</a></li>
+  </ul>
+
+  GraphObject constructors now accept one or two optional arguments. The first is the value for a common property,
+  and the second is a JavaScript Object detailing properties to initialize. For example, one can now write:
+  <ul>
+    <li><code>new go.TextBlock("Some Text", { margin: 5 })</code></li>
+    <li><code>new go.Picture("sourceURI.png", { width: 30, height: 30 })</code></li>
+    <li><code>new go.Shape("RoundedRectangle", { fill: "blue", stroke: "yellow" })</code></li>
+    <li><code>new go.Panel("Auto", { padding: 10, background: "green" })</code></li>
+  </ul>
+
+<p>This means that one can now write code like:</p>
+<pre class="lang-js"><code>// Create a Node and add a Shape and a TextBlock to it:
+myDiagram.nodeTemplate =
+  new go.Node("Vertical")
+    .add(new go.Shape({ width: 40, height: 40, fill: "white" })  // default width & height & fill
+          .bind("width") // binds data.width to Shape.width
+          .bind("height")
+          .bind("fill", "color") // binds data.color to Shape.fill
+          .bind("figure", "fig")) // data.fig should be the registered name of a geometry figure generator
+    .add(new go.TextBlock("(no name)",  // default string to display
+                          { isMultiline: false, editable: true })
+          .bind("text", "name", null, null));  // TwoWay Binding of TextBlock.text with data.name without converters
+</code></pre>
+
+<p>
+  New methods <a>GraphObject.set</a> and <a>Diagram.set</a> return their instance.
+  When using TypeScript definitions, the compiler checks these calls for GraphObject and Diagram property existence and value types.
+</p>
+
+<p>
+  New method <a>GraphObject.apply</a> can be used to define common functions that provide settings and bindings.
+  Such customizations can then be applied to a GraphObject that you are initializing by calling <a>GraphObject.apply</a> with that function.
+</p>
+
+<p>
+  Together, these changes remove the need to use <a>GraphObject,make</a> when concisely defining Diagrams and templates.
+  For a complete example, this code:
+</p>
+
+<pre class="lang-js"><code>const $ = go.GraphObject.make;
+
+const myDiagram = $(go.Diagram, "myDiagramDiv",
+  {
+    "undoManager.isEnabled": true
+  });
+
+myDiagram.nodeTemplate =
+  $(go.Node, "Auto",
+    $(go.Shape, "RoundedRectangle",
+      { strokeWidth: 0, fill: "white" },
+      new go.Binding("fill", "color")),
+    $(go.TextBlock,
+      { margin: 8, font: "bold 14px sans-serif", stroke: '#333' },
+      new go.Binding("text", "key"))
+  );
+</code></pre>
+
+<p>Can now be written as:</p>
+
+<pre class="lang-js"><code>const myDiagram = new go.Diagram("myDiagramDiv",
+  {
+    "undoManager.isEnabled": true
+  });
+
+myDiagram.nodeTemplate =
+  new go.Node("Auto")
+    .add(new go.Shape("RoundedRectangle", { strokeWidth: 0, fill: "white" })
+          .bind("fill", "color"))
+    .add(new go.TextBlock({ margin: 8, font: "bold 14px sans-serif", stroke: '#333' })
+          .bind("text", "key"));
+</code></pre>
+
+<p>
+  For more information and examples, see the <a href="intro/buildingObjects.html">intro page on Building Objects</a>.
+</p>
+
+<h3>General New Features in GoJS 2.2</h3>
+
+<ul>
+  <li>
+    Spot Panels now support <a>Panel.alignmentFocusName</a> on the main element.
+    This can be useful for creating Spot panels with multiple item arrays that align to the same main element.
+    There is an example of this property in the
+    <a href="intro/panels.html#AligningSubElementsSpotPanels">Spot Panel section of the Panel intro page</a>.
+  </li>
+  <li>
+    The <a>Diagram.autoScrollInterval</a> property controls the milliseconds between autoscroll events.
+  </li>
+  <li>
+    The <a>Diagram.delayInitialization</a>'s argument function is now a passed a reference to the Diagram.
+  </li>
+  <li>
+    The <a>Overview.drawsGrid</a> and <a>Overview.updateDelay</a> properties control drawing by an Overview.
+  </li>
+  <li>
+    The <a>CommandHandler.isZoomToFitRestoreEnabled</a> property controls whether the <a>CommandHandler.zoomToFit</a>
+    command ever restores the previous Diagram scale and position.
+  </li>
+  <li>
+    The <a>DraggingTool.copyCursor</a>, <a>DraggingTool.moveCursor</a>, and <a>DraggingTool.nodropCursor</a> properties modify the cursors during a drag.
+  </li>
+  <li>
+    The <a>LinkingBaseTool.linkingCursor</a> property modifies the cursor during linking.
+  </li>
+  <li>
+    The <a>GraphObject.findBindingPanel</a> method walks up the visual tree to return the first Panel whose <a>Panel.data</a> is bound to data.
+    Used  in the <a href="extensions/Hyperlink.html" target="_blank">Hyperlink</a> sample.
+  </li>
+  <li>
+    The <a>Panel.copyTemplate</a> method makes a deep copy of a Panel, including its Bindings, to allow use of the result in templates.
+    This is used in <a href="/extras/linkLabelsInFront.html" target="_blank">LinkLabels In Front</a> sample.
+  </li>
+  <li>
+    The <a>TextBlock.formatting</a> property controls the policy of trimming whitespace on TextBlock text.
+    This can be useful when text strings are preformatted.
+  </li>
+  <li>
+    The <a>TextBlock.lineHeight</a> read-only property provides better information about how the text is being measured and rendered.
+  </li>
+  <li>
+    The <a>TextBlock.spacingAbove</a> and <a>TextBlock.spacingBelow</a> properties
+    better control the measuring and rendering in addition to the <a>TextBlock.lineHeight</a>.
+  </li>
+  <li>
+    The <a>Node.findExternalTreeLinksConnected</a> method returns a collection of Links that connect with this Node
+    or any in its subtree, excluding any isTreeLink Links.
+    This is the tree-equivalent of <a>Group.findExternalLinksConnected</a> for Groups/subgraphs.
+  </li>
+  <li>
+    The <a>Node.findVisibleNode</a> method walks up the chain of <a>Node.containingGroup</a>s to find the first node that is visible.
+    This can be overridden to change behavior, as it is in <a href="samples/treeMapper.html" target="_blank">Tree Mapper</a> sample.
+  </li>
+  <li>
+    The <a>PanelLayout.remeasureObject</a> method forces a specific GraphObject (but none of its containing panels) to remeasure.
+    This can be useful implementing custom layouts.
+  </li>
+  <li>
+    The <a>DraggingTool</a> now optimizes transactions to reduce memory usage by only saving the first and last drag changes.
+    This can be changed by overriding <a>DraggingTool.stopTransaction</a>.
+  </li>
+  <li>
+    The <a>Binding</a> constructor now accepts a back-converter as an argument.
+    A null or function argument value as the fourth argument will automatically call <a>Binding.makeTwoWay</a>> for you.
+    Not supplying the fourth argument or passing it undefined will leave the Binding OneWay, as it has in the past.
+  </li>
+  <li>
+    The <a>RadialLayout</a> extension by default spreads the children better.
+  </li>
+  <li>
+    The <a>TextEditingTool</a> now stops any default animation when the tool is activated.
+  </li>
+  <li>
+    The <a>TextEditingTool</a> now respects the vertical alignment when a TextBlock is taller than its text.
+  </li>
+  <li>
+    <a>InputEvent.bubbles</a> allows events to bubble beyond the Diagram div.
+    This can be useful in <a>CommandHandler</a> and <a>Tool</a> method overrides.
+  </li>
+  <li>
+    <em>For some testing environments:</em> <a>Diagram,isUsingDOM</a> and <a>Diagram,useDOM</a>
+    can query and control the GoJS library's expectation of a DOM existing.
+  </li>
+  <li>
+    Fixed a regression from 2.1.29 where some links may update their geometries outside of a transaction.
+  </li>
+  <li>
+    <em>Potentially incompatible:</em> Touch and Mouse events have been replaced internally with Pointer events.
+    The GoJS API has not changed, nor has its behavior, as long as the browser is not so old that it does not implement pointer events.
+  </li>
+</ul>
+
+<h3>Easier Manipulation and Customization of Geometries</h3>
+
+<p>
+  GoJS 2.2 contains new methods to simplify geometric calculations and more easily customize geometries.
+</p>
+<ul>
+  <li>
+    <a>Point,intersectingLineSegments</a> is a static function that returns true if two finite straight line segments intersect each other.
+  </li>
+  <li>
+    <a>Rect,intersectsLineSegment</a> is a static function that returns true if a rectangular area is intersected by a finite straight line segment.
+  </li>
+  <li>
+    <a>Point,compareWithLineSegment</a> is a static function that compares a point with a finite straight line segment, given x,y numbers.
+    <a>Point.compareWithLineSegmentPoint</a> is a method that performs the same comparison, but on Points.
+  </li>
+  <li>
+    <a>Geometry.containsPoint</a> is a method that returns true if the Geometry contains a given point.
+  </li>
+  <li>
+    The <a>Link.routeBounds</a> read-only property returns the bounds of the Link geometry in document coordinates.
+    Used in the <a href="extensions/BalloonLink.html" target="_blank">BalloonLink</a> sample.
+  </li>
+  <li>
+    The <a>Node.getAvoidableRect</a> method returns the area to be avoided for this node,
+    by default equal to the node's <a>GraphObject.actualBounds</a> plus the <a>Node.avoidableMargin</a>.
+    This method can be overridden to customize AvoidsNodes routing behavior near a node to account for the visual area occupied by the node
+    being smaller than the full rectangular bounds of the node.
+  </li>
+  <li>
+    Groups now implement <a>Panel.isClipping</a>.
+    If set to true on a Group and if the group has a <a>Group.placeholder</a>,
+    the group will visually clip its member nodes and links.
+    This does not change how those parts are measured, nor does it affect how those parts may be positioned.
+  </li>
+  <li>
+    The <a>Layer.isInDocumentBounds</a> property allows finer control of which layers are part of the <a>Diagram.documentBounds</a>.
+    Before 2.2, only layers with <a>Layer.isTemporary</a> set to true were excluded from the document bounds (and could not be explicitly included).
+  </li>
+  <li>
+    The <a>ResizingTool.oppositePoint</a> property returns the Point opposite to the chosen, dragged handle of the "Resizing" Adornment.
+    This allows customizations like the
+    <a href="/extras/groupResizingLimited.html" target="_blank">LimitedGroupResizingTool</a> sample,
+    which demonstrates a custom tool to allow resizing groups while disallowing the group to resize smaller than its members,
+    and also disallowing the group to expand to cover any non-member nodes.
+  </li>
+  <li>
+    The <code>RoundedRectangles</code> extension code now includes definitions for the "RoundedLeftRectangle" and "RoundedRightRectangle" figures.
+    The definitions for all four "Rounded...Rectangle" figures has been modified slightly to better match the curves of a full "RoundedRectangle".
+  </li>
+</ul>
+
+<hr />
+
+<h4 id="2.2.14">Changes for 2.2.14</h4>
+<ul>
+  <li>
+    Diagram Layouts with <a>Layout.isRealtime</a> set to <code>true</code> will no longer attempt real-time layouts during the <a>DraggingTool</a> operation.
+  </li>
+  <li>
+    Graduated Panels now deal with highly precise floating point numbers more accurately.
+  </li>
+</ul>
+
+
+<h4 id="2.2.13">Changes for 2.2.13</h4>
+<ul>
+  <li>
+    Fixed asynchronous model loading which might intermittently fail to perform AvoidsNodes routing.
+  </li>
+  <li>
+    Enhanced the <a>ArrangingLayout</a> extension to support placing the side nodes about the middle of the side,
+    by supporting values such as <code>go.Spot.Bottom</code> for the <a>ArrangingLayout.side</a> property.
+  </li>
+  <li>
+    Improved the "HyperlinkText" builder extension so that it works by default in <a>Adornment</a>s and
+    other Parts that are in temporary layers, by setting <a>GraphObject.isActionable</a> to true.
+  </li>
+  <li>
+    Table panel separator strokes no longer draw if a row or column is empty of visual elements,
+    and will not draw a separator above the first-rendered row/col.
+  </li>
+</ul>
+
+<h4 id="2.2.12">Changes for 2.2.12</h4>
+<ul>
+  <li>
+    We have been optimizing the space used by GraphObjects.
+    The heap used by typical large diagrams now occupies about 10% less space.
+    Creating copies of a lot of nodes and links may be a bit faster now too.
+  </li>
+  <li>
+    Fixed the new <a>PanelLayoutFlow</a> extension so that multiple "Flow" panels can coexist in the same panel</a>.
+  </li>
+  <li>
+    Improved GenogramLayout in the <a href="samples/genogram.html" target="_blank">Genogram</a> sample
+    to support a horizontal direction as well as the standard vertical direction.
+  </li>
+  <li>
+    Improved the <a href="samples/selectableFields.html" target="_blank">Selectable Fields</a>
+    and <a href="samples/selectablePorts.html" target="_blank">Selectable Ports</a>
+    samples so that clicking on fields or ports within a node respects the Control and Shift modifiers
+    to toggle or add to the collection of selected fields or ports.
+  </li>
+  <li>
+    Fixed object picking (<a>Diagram.findObject</a>, <a>GraphObject.containsPoint</a>, etc) for Shapes with a <a>GraphObject.background</a>.
+  </li>
+  <li>
+    The <a>Group.layout</a> property setter now checks to make sure that the new layout is not also the value of <a>Diagram.layout</a>.
+  </li>
+</ul>
+
+<h4 id="2.2.11">Changes for 2.2.11</h4>
+<ul>
+  <li>
+    Like the <a>DraggingTool</a> in v2.2.0, <a>LinkReshapingTool</a>, <a>ResizingTool</a>, and <a>RotatingTool</a> now optimize transactions
+    to reduce memory usage by only saving the first and last changes for each property of each object in the transaction.
+    This can be changed by overriding <b>stopTransaction</b> on the respective tool.
+  </li>
+  <li>
+    <a>Shape.graduatedSkip</a>, <a>TextBlock.graduatedSkip</a>, and <a>TextBlock.graduatedFunction</a>
+    now take a second argument, the Shape or TextBlock that the function is being called for.
+  </li>
+  <li>
+    Graduated Panels now correctly draw ticks/labels at very large <a>Panel.graduatedMax</a> values.
+  </li>
+  <li>
+    The AMD <code>define</code> statement has been removed from the module version of the library
+    (<code>go-module.js</code>, <code>go.mjs</code>, <code>go-debug-module.js</code>)
+  </li>
+  <li>
+    The <a>DraggingTool</a>, when dragging a Link (<a>DraggingTool.draggedLink</a>), now passes that link as the <a>RelinkingTool.originalLink</a>
+    so that link validation predicates are passed that link.
+  </li>
+  <li>
+    Disconnected links now support setting <a>Part.locationSpot</a>.
+  </li>
+</ul>
+
+<h4 id="2.2.10">Changes for 2.2.10</h4>
+<ul>
+  <li>
+    Graduated panels now draw all tick marks specifying a <a>Shape.graduatedSkip</a>/<a>TextBlock.graduatedSkip</a> function,
+    even when they could be very close together.
+  </li>
+  <li>
+    Fixed drawing on very zoomed-out graphs.
+  </li>
+  <li>
+    Multiple orthogonal links between identical nodes side-by-side are now drawn without crossings. This fixes a regression from 2.1.51.
+  </li>
+</ul>
+
+<h4 id="2.2.9">Changes for 2.2.9</h4>
+<ul>
+  <li>
+    Fixed a regression from 2.2.8 with Table Panel when tables are empty (including tables in Node templates).
+  </li>
+</ul>
+
+<h4 id="2.2.8">Changes for 2.2.8</h4>
+<ul>
+  <li>
+    Improved Table Panel measuring when using TableRows and TableColumns in sparsely populated tables.
+  </li>
+  <li>
+    Improved Table Panel arranging of items that span several rows or columns, when those rows or columns do not all exist.
+  </li>
+  <li>
+    Animation fixes when <a>AnimationTrigger</a>s execute during a drag.
+  </li>
+  <li>
+    Improved accuracy of tick angles along curves in Graduated panels.
+  </li>
+  <li>
+    Fix for two-way bindings on <a>Part.location</a> when undoing.
+  </li>
+  <li>
+    Calls to <a>Diagram.makeImage</a> and <a>Diagram.makeImageData</a> no longer throw exceptions when attempting to render "broken" images.
+  </li>
+</ul>
+
+<h4 id="2.2.7">Changes for 2.2.7</h4>
+<ul>
+  <li>
+    Nested or space-constrained Table Panels apportion space more correctly when some Table elements are stretched
+    and other rows/columns have their width or height set.
+  </li>
+  <li>
+    Improved the ScrollingTable extension to include a scrollbar "thumb".
+  </li>
+</ul>
+
+<h4 id="2.2.6">Changes for 2.2.6</h4>
+<ul>
+  <li>
+    Made improvements in gesture handling for iPad + keyboard combinations.
+  </li>
+  <li>
+    Made improvements and added features to the <a href="samples/gantt.html" target="_blank">Gantt</a>
+    and <a href="samples/donutCharts.html" target="_blank">Donut Charts</a> samples.
+  </li>
+  <li>
+    Drag and drop from a Diagram into empty page space no longer throws an error (regression in 2.2.4).
+  </li>
+  <li>
+    Data <a>Inspector</a>, when <code>multipleSelection</code> option is true,
+    now clears the properties fields when the <a>Diagram.selection</a> is empty.
+  </li>
+</ul>
+
+<h4 id="2.2.5">Changes for 2.2.5</h4>
+<ul>
+  <li>
+    Drag and drop across Diagrams fixed on touch devices (regression in 2.2.4 for non Shadow DOM environments).
+  </li>
+  <li>
+    Module versions of the library <code>release/go.mjs</code> and <code>release/go-module.js</code> now export <code>go</code> as the default export.
+  </li>
+</ul>
+
+<h4 id="2.2.4">Changes for 2.2.4</h4>
+<ul>
+  <li>
+    Allow <a>AnimationTrigger</a>s to run during Tool operation.
+    Previously, Animation Triggers would not run if a Tool was active,
+    which prevented some tools such as <a>LinkingTool</a> from starting animations during their events.
+  </li>
+  <li>
+    Fixed a regression since 2.2.0: Drag and drop in Shadow DOM environments such as Angular
+    now correctly identify the target Diagram (for dropping from Palettes, for instance).
+  </li>
+  <li>
+    <a>Diagram,useDOM</a> and <a>Diagram,isUsingDOM</a> were incorrectly minified, and now have their names properly exposed.
+  </li>
+</ul>
+
+<h4 id="2.2.3">Changes for 2.2.3</h4>
+<ul>
+  <li>
+    Fixed Spot Panels erroneously giving incorrect sizing information to its elements if a previous element had a stretch.
+  </li>
+  <li>
+    Improved <a>LayeredDigraphLayout</a> routing of Bezier curve links to reduce crossing over nodes.
+  </li>
+  <li>
+    Fixed optimization (in 2.0.0) of <a>Panel.rebuildItemElements</a> when item template(s) may have changed.
+  </li>
+  <li>
+    The <code>package.json</code> now specifies <code>"module": "release/go-module.js"</code>
+  </li>
+</ul>
+
+<h4 id="2.2.2">Changes for 2.2.2</h4>
+<ul>
+  <li>
+    Added <code>init</code> optional argument to <a>Brush</a> constructor.
+  </li>
+  <li>
+    Stopped tap-hold on some versions of iOS Safari from selecting text.
+  </li>
+  <li>
+    Improvements for licensing Electron apps.
+  </li>
+</ul>
+
+<h4 id="2.2.1">Changes for 2.2.1</h4>
+<ul>
+  <li>
+    Added rounded corners to the <a>BalloonLink</a> extension, controlled by the new property <a>BalloonLink.corner</a>.
+    Improved <a>BalloonLink</a>'s implementation of <a>BalloonLink.base</a>.
+  </li>
+  <li>
+    Fixed licensing issues when using Windows high contrast mode, due to changes in Chrome and Edge.
+  </li>
+  <li>
+    Added <code>init</code> optional argument to <a>Layer</a> and <a>Animation</a> constructors. <a>Animation.start</a> and <a>Animation.stop</a> now return <code>this</code>.
+  </li>
+</ul>
+
+
+<hr />
+
+<h2 id="2.1">GoJS 2.1</h2>
+
+<h3>New Animation Capabilities</h3>
+
+<p>GoJS 2.1 contains a number of new features to animate different components of your Diagram.</p>
+
+<p>
+  See the <a href="intro/animation.html" target="_blank">Intro page on Animation</a>
+  and the <a href="samples/customAnimations.html" target="_blank">Custom Animation sample</a> for more details and examples.
+</p>
+<ul>
+  <li>
+    New default GoJS animation "fades up", instead of animating Node locations. Added <a>AnimationManager.initialAnimationStyle</a>
+    to control this behavior.
+    Here is an example of:
+    <ul>
+      <li>
+        (top) The new initial animation, the Diagram position animating upwards and Diagram opacity animating
+        from 0 to 1.
+      <li>
+        (middle) A custom "zoom in" animation, animating Diagram scale, which is demonstrated in
+        the new <a href="samples/stateChart.html" target="_blank">State Chart</a> sample,
+      <li>
+        (bottom) <a>AnimationManager.initialAnimationStyle</a> set to <a>AnimationManager.AnimateLocations</a> to
+        perform the GoJS 2.0 and previous style of animation.
+        The <a href="samples/dataVisualization.html" target="_blank">Data Visualization</a> sample uses this
+        option.
+    </ul>
+  </li>
+  <li>
+    Added <code>"InitialAnimationStarting"</code> <a>DiagramEvent</a> to more easily customize initial animations.
+    See <a>AnimationManager.initialAnimationStyle</a> for details.
+  </li>
+  <li>
+    New class: <a>AnimationTrigger</a>. These describe how to automatically animate a property on a GraphObject
+    when it changes value.
+  </li>
+  <li>
+    New class: <a>Animation</a>. This class lets you declaratively setup custom animations, with options for
+    indefinite animations.
+  </li>
+  <li>
+    New <a>AnimationManager</a> options, including the ability to define custom animation effects to animate with
+    <a>AnimationManager,defineAnimationEffect</a>
+  </li>
+  <li>
+    New Animation samples and samples modified to use new Animation features:
+    <ul>
+      <li>
+        <a href="samples/customAnimations.html" target="_blank">Custom Animation</a> - <strong>New Sample:</strong>
+        Demonstrating a number of Node creation/deletion animations, linking animations, and more.
+      </li>
+      <li>
+        <a href="samples/treeLoadAnimation.html" target="_blank">Tree Load Animation</a> - <strong>New Sample:</strong>
+        recursive animation upon model load.
+      </li>
+      <li>
+        <a href="samples/flowchart.html" target="_blank">Flowchart</a> - In the Palette only, initial animation
+        is disabled in favor of a custom fade-in animation.
+      </li>
+      <li>
+        <a href="samples/stateChart.html" target="_blank">State Chart</a> - Initial animation is disabled in
+        favor of a custom zoom fade-in animation.
+      </li>
+      <li>
+        <a href="samples/dataVisualization.html" target="_blank">Data Visualization</a> - Nodes now move using an
+        <a>AnimationTrigger</a>.
+      </li>
+      <li><a href="samples/kittenMonitor.html" target="_blank">Kitten Monitor</a> - Kittens now move using an <a>AnimationTrigger</a>.</li>
+      <li>
+        <a href="samples/processFlow.html" target="_blank">Process Flow</a> - An indefinite Animation of the
+        Links' strokeDashArray.
+      </li>
+      <li>
+        <a href="samples/shopFloorMonitor.html" target="_blank">Shop Floor Monitor</a> - Link color changes now
+        use an <a>AnimationTrigger</a>.
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Improved Support For Data Synchronization</h3>
+
+<p>
+  GoJS 2.1 contains some new methods to ease integration of GoJS diagrams in applications that maintain their own
+  data, particularly React apps.
+</p>
+
+<p>
+  See the <a href="intro/react.html" target="_blank">Intro page on using GoJS with React</a> and
+  the <a href="https://github.com/NorthwoodsSoftware/gojs-react-basic" target="_blank">gojs-react example project</a> for details and examples.
+  Also see <a href="https://github.com/NorthwoodsSoftware/gojs-react" target="_blank">gojs-react</a>, a package
+  containing React Components for GoJS Diagrams, Palettes, and Overviews.
+</p>
+<ul>
+  <li>
+    New method: <a>Model.toIncrementalData</a>. This method outputs an <a>IncrementalData</a> object containing
+    changes that occurred within a <a>Transaction</a>,
+    similar to the existing method, <a>Model.toIncrementalJson</a>. It can be used to keep outside data
+    synchronized with the GoJS model.
+  </li>
+  <li>
+    New methods: <a>Model.mergeNodeDataArray</a> and <a>GraphLinksModel.mergeLinkDataArray</a>. These methods are
+    used to merge outside data changes into the GoJS model.
+  </li>
+  <li>
+    New method: <a>Model.cloneDeep</a>. This method can be used to make a deep copy of an object, which may be
+    useful to ensure GoJS doesn't share references with outside state.
+    It is also used within <a>Model.toIncrementalData</a> to ensure <a>IncrementalData</a>'s list of modified
+    objects won't contain references to the model's data objects, if the external data is required to be immutable.
+  </li>
+</ul>
+
+<hr />
+
+<h4 id="2.1.56">Changes for 2.1.56</h4>
+<ul>
+  <li>
+    Updated the root object for systems that define <code>window</code> but do not attach all global variables to it.
+    GoJS now prefers <code>globalThis</code> if it exists, then <code>global</code>.
+  </li>
+</ul>
+
+<h4 id="2.1.55">Changes for 2.1.55</h4>
+<ul>
+  <li>
+    Fixed some improper shadows in the SVG output of <a>Diagram.makeSVG</a>.
+  </li>
+</ul>
+
+<h4 id="2.1.54">Changes for 2.1.54</h4>
+<ul>
+  <li>
+    Fixed <a>Diagram.viewSize</a> when setting it to a real value and then later setting it back to a NaN value.
+  </li>
+  <li>
+    As with 2.1.52, fixed more scenarios with custom animations improperly adding state to the <a>AnimationManager.defaultAnimation</a>.
+  </li>
+  <li>
+    Fixed rare cases of <a>LayeredDigraphLayout</a> trying to get the "centerX" property of a null vertex.
+  </li>
+  <li>
+    Fixed the <a>RelinkingTool</a> not to automatically select the link that was reconnected.
+  </li>
+</ul>
+
+<h4 id="2.1.53">Changes for 2.1.53</h4>
+<ul>
+  <li>
+    Fixed <a>Binding.ofModel</a> binding when there is no <a>Diagram</a> and thus no <a>Model</a> to just ignore the binding.
+  </li>
+  <li>
+    Fixed a regression in <a>Diagram.makeSVG</a> from 2.1.49 when using a <a>Panel,Spot</a> with <a>Panel.isClipping</a> set to <code>true</code>,
+    where some elements would get grouped and positioned incorrectly.
+  </li>
+  <li>
+    Fixed <a>Model.toJson</a> output when object keys contained unescaped double-quote characters.
+  </li>
+  <li>
+    Fixed some Shape Geometry intersections (such as with Link connections) when the Shape's Geometry contained small and flat beziers.
+  </li>
+  <li>
+    Fixed collapsed Parts incorrectly causing their Groups to remeasure, which may have caused Group's connected Links to re-route.
+  </li>
+</ul>
+
+<h4 id="2.1.52">Changes for 2.1.52</h4>
+<ul>
+  <li>
+    Fixed animations incorrectly resetting some link routes.
+  </li>
+  <li>
+    Fixed custom animations improperly adding state to the <a>AnimationManager.defaultAnimation</a>.
+  </li>
+  <li>
+    Fixed a regression in 2.1.51 where un-modeled parts containing Images, that are added before a model is set, may fail to load.
+  </li>
+  <li>
+    Fixed a regression from 2.1.50 when <a>Picture.errorFunction</a> was used to modify the <a>Picture.source</a> or <a>Picture.element</a>, which would cause a "Collection was modified during iteration" error.
+  </li>
+</ul>
+
+<h4 id="2.1.51">Changes for 2.1.51</h4>
+<ul>
+  <li>
+    The <a>TextEditingTool</a>, when the user has entered an invalid text string, has always called any
+    <a>TextBlock.errorFunction</a> and then continued showing the text editor so that the user could fix their text entry.
+    The <a>TextEditingTool.doError</a> method now calls any <a>TextBlock.errorFunction</a> and
+    also calls <a>HTMLInfo.show</a> on the <a>TextEditingTool.currentTextEditor</a>.
+    This will allow an override of <a>TextEditingTool.doError</a> not to continue showing the editor.
+    If you have not overridden that method, which was new in 2.1, this change will not affect you.
+  </li>
+  <li>
+    Fixed <a>Model,fromJson</a> not to substitute instances of classes such as <a>Point</a> and <a>Size</a> when the Object's
+    "class" property had a value that is "Point" or "Size".
+    The property value must be what is produced by <a>Model.toJson</a>, which uses values such as "go.Point" or "go.Size".
+    The documentation lists all of the substitution cases that <a>Model,fromJson</a> handles.
+  </li>
+  <li>
+    Fixed a regression from 2.1.43 which caused some links to animate routes incorrectly upon dragging.
+  </li>
+  <li>
+    Fixed loading Images used as a <a>Picture.element</a>.
+  </li>
+  <li>
+    Improved some AvoidsNodes routing of Links when connecting Nodes in different Groups and the Groups are not <a>Group.avoidable</a>.
+  </li>
+  <li>
+    Fixed using multiple license keys.
+  </li>
+</ul>
+
+<h4 id="2.1.50">Changes for 2.1.50</h4>
+<ul>
+  <li>
+    Enhanced the <a>LinkShiftingTool</a> extension to support links that are only connected at one end.
+  </li>
+  <li>
+    Fixed <a>CommandHandler.doKeyDown</a> to support <a>Robot.keyDown</a> use of "F2" and "ContextMenu" keys.
+  </li>
+  <li>
+    Improved routing of AvoidsNodes links that have a "to" end segment with a direction that is a multiple of 45 (but not 90) degrees.
+  </li>
+  <li>
+    Fixed diagram not redrawing after images load in frameworks that use a shadow DOM, such as Angular.
+  </li>
+  <li>
+    If you call <a>TextBlock,setBaseline</a> or <a>TextBlock,setUnderline</a> outside of your diagram initialization,
+    you should also call <a>Diagram.redraw</a> on all Diagrams.
+  </li>
+</ul>
+
+<h4 id="2.1.49">Changes for 2.1.49</h4>
+<ul>
+  <li>
+    Added the <a href="extensions/PanelLayoutFlow.js" target="_blank">Flow PanelLayout</a> extension,
+    demonstrated in the <a href="extensions/PanelLayoutFlow.html" target="_blank">Flow PanelLayout</a> sample.
+    This panel layout (not a diagram layout!) arranges panel elements into rows or columns.
+    As time goes by we may add more properties to control the behavior of this custom panel layout.
+  </li>
+  <li>
+    Fixed undo/redo bug involving setting <a>RowColumnDefinition</a> properties and calls to <a>Panel.removeColumnDefinition</a>.
+  </li>
+  <li>
+    Fixed <a>Picture.successFunction</a> erroneously being called twice in some situations, such as when a node was copy-pasted.
+  </li>
+  <li>Fixed <a>Diagram.makeSVG</a> not rendering shadows on some GraphObjects.</li>
+  <li>Fixed <a>Diagram.makeSVG</a> not clipping when using a <a>Panel,Spot</a> with <a>Panel.isClipping</a> set to <code>true</code>.</li>
+  <li>Improved visual consistency of shadows in SVG output from <a>Diagram.makeSVG</a>.</li>
+</ul>
+
+<h4 id="2.1.48">Changes for 2.1.48</h4>
+<ul>
+  <li>
+    Fixed <a>Panel.removeRowDefinition</a> and <a>Panel.removeColumnDefinition</a>
+    to decrease the <a>Panel.rowCount</a> and <a>Panel.columnCount</a>
+    when the highest index <a>RowColumnDefinition</a> is removed.
+  </li>
+  <li>
+    Fixed <a>Picture.successFunction</a>, which was called for only the first Picture with a given unique <a>Picture.source</a>.
+    It is now called for every Picture that has a <code>successFunction</code> defined with the same (successfully loaded) source.
+  </li>
+</ul>
+
+<h4 id="2.1.47">Changes for 2.1.47</h4>
+<ul>
+  <li>
+    Fixed <a>Diagram.layoutDiagram</a> not performing a layout immediately if called within an ongoing Diagram update
+    (such as during a <a>DiagramEvent</a> like <code>"InitialLayoutCompleted"</code>).
+  </li>
+  <li>
+    Fixed <a>Panel.itemTemplate</a> so that it is used, not the default item template, when the panel cannot find any
+    template with the given category name in the item data.
+  </li>
+  <li>
+    <a>Diagram.viewSize</a>, if set, now takes precedence over the size of the <a>Diagram.div</a>.
+    It is not typical to set both a DIV and the <code>viewSize</code>, but in environments where a DIV is set automatically
+    it may be useful for testing purposes to set an explicit <code>viewSize</code> as well.
+  </li>
+</ul>
+
+<h4 id="2.1.46">Changes for 2.1.46</h4>
+<ul>
+  <li>
+    Fixed indefinite animations causing some transactions to skip the <a>UndoManager</a>.
+  </li>
+  <li>
+    Fixed <a>Diagram.makeImageData</a> to draw any other Parts in the "Grid" Layer besides the Part holding the <a>Diagram.grid</a>
+    when the <code>showGrid</code> option is true but the <code>showTemporary</code> option is false.
+  </li>
+</ul>
+
+<h4 id="2.1.45">Changes for 2.1.45</h4>
+<ul>
+  <li>
+    Fixed a bounds calculation bug with <a>PathSegment,SvgArc</a>s, when the arc has a zero X or Y radius value.
+  </li>
+  <li>
+    Link route calculations now avoid an effectively infinite loop due to floating point errors when the two ports almost exactly overlap each other.
+  </li>
+  <li>
+    Fixed an occasional exception when dragging a disconnected link when the link had no points in its route.
+  </li>
+  <li>
+    The <a>GraphObject.naturalBounds</a> of a <a>Shape</a> now always prefers <a>GraphObject.desiredSize</a> if it exists, over the Shape's <a>Geometry.bounds</a>.
+    These are usually the same, but a Geometry with beziers can be slightly off from the desiredSize used to create it.
+  </li>
+</ul>
+
+<h4 id="2.1.44">Changes for 2.1.44</h4>
+<ul>
+  <li>
+    Fixed a regression from 2.1.28 with some <a>Shape.geometryString</a> paths.
+    If a path contained an arc command that was closed, a relative move command afterwards would be at
+    the wrong coordinates.
+  </li>
+</ul>
+
+<h4 id="2.1.43">Changes for 2.1.43</h4>
+<ul>
+  <li>
+    Improved performance of <a>LayeredDigraphLayout</a> for large graphs when <a>LayeredDigraphLayout.packOption</a>
+    is set to <a>LayeredDigraphLayout,PackAll</a>.
+    Setting <a>LayeredDigraphLayout.packOption</a> to a subset of the possible flags has always helped performance at the expense of improved layout.
+    Also, it has always helped to set <a>LayeredDigraphLayout.aggressiveOption</a> to <a>LayeredDigraphLayout,AggressiveNone</a>.
+  </li>
+  <li>
+    Fixed non-default indefinite animations preventing the default animation from starting. Fixed some other non-default animation bugs, such as indefinite animations preventing Overviews from updating.
+  </li>
+  <li>
+    Enhanced <a>LinkingTool.findLinkablePort</a>, when <a>LinkingTool.startObject</a> is a Node and the whole node is not a port,
+    to return the node's default port <a>Node.port</a> instead of null, if the port is a valid port for linking from or to.
+  </li>
+</ul>
+
+<h4 id="2.1.42">Changes for 2.1.42</h4>
+<ul>
+  <li>
+    Fixed an animation bug with <a>ResizingTool</a> where it would disable all animations on resizing.
+  </li>
+  <li>
+    Setting <a>AnimationManager.isEnabled</a> to false and then true again will resume any indefinite animations (animations with <a>Animation.runCount</a> set to <code>Infinity</code>).
+  </li>
+  <li>
+    Fixed RadialLayout not properly resetting its network. This was most often seen when using with
+    <a>Diagram.delayInitialization</a> (including gojs-react and gojs-angular).
+  </li>
+</ul>
+
+<h4 id="2.1.41">Changes for 2.1.41</h4>
+<ul>
+  <li>
+    Improved the animation of colors in <a>Animation</a>s.
+  </li>
+  <li>
+    Added the <a href="extensions/SpotRotatingTool.js" target="_blank">Spot Rotating Tool</a> extension,
+    demonstrated in the <a href="extensions/SpotRotating.html" target="_blank">Spot Rotating</a> sample.
+    This is basically the <a>RotatingTool</a> extended to support an additional Adornment and handle for
+    letting the user interactively move the <a>RotatingTool.rotationPoint</a> by setting
+    <a>Part.rotationSpot</a>.
+  </li>
+  <li>Added an Introduction page about <a href="intro/platforms.html">Using GoJS on Different Platforms</a>, summarizing existing resources for them.</li>
+</ul>
+
+<h4 id="2.1.40">Changes for 2.1.40</h4>
+<ul>
+  <li>
+    Fixed some styling and missing files in the web site as a result of the reorganization in 2.1.39.
+  </li>
+  <li>
+    Simplified the Storage and FloorplannerTS projects.
+  </li>
+</ul>
+
+<h4 id="2.1.39">Changes for 2.1.39</h4>
+<ul>
+  <li>
+    Reorganized GoJS kit and site. <code>gojs</code> package no longer contains jQuery, and samples that reference jQuery use a CDN.
+  </li>
+  <li>
+    Fixed animating the position of GraphObjects inside a Position Panel.
+  </li>
+</ul>
+
+<h4 id="2.1.38">Changes for 2.1.38</h4>
+<ul>
+  <li>
+    Table panel fixes with stretch elements, this includes a regression fix from 2.1.35.
+  </li>
+  <li>
+    Fixed a regression (for IE11 only) from 2.1.37, which broke mouse events.
+  </li>
+</ul>
+
+<h4 id="2.1.37">Changes for 2.1.37</h4>
+<ul>
+  <li>
+    Added an Introduction page about <a href="intro/testing.html">Testing</a> with Jest and with Cypress.
+  </li>
+  <li>
+    Fixed some scenarios with Table Panels not apportioning space correctly when elements stretched
+    and rows/columns had minimums or maximums set.
+  </li>
+  <li>
+    Fixed touch-dragging between Diagrams in frameworks that use a shadow DOM (like Angular).
+  </li>
+  <li>
+    Fixed routing invalidation of links to nodes in collapsed groups that have "...Sides" Spots.
+  </li>
+  <li>
+    Fixed shadows on unfilled <a>PathFigures</a> when a <a>GraphObject.fill</a> was set. This mostly presented itself when shadowing bezier or orthogonal Link paths.
+    This fix may cause Links with a Link Label to draw a shadow on the Link path where none was previously. If you do not want the Link path shaded, you must set
+    <a>GraphObject.shadowVisible</a> to <code>false</code> on the Link path Shape.
+  </li>
+</ul>
+
+<h4 id="2.1.36">Changes for 2.1.36</h4>
+<ul>
+  <li>
+    Fixed "Graduated" Panels rendering of final tick mark in some cases where due to floating point errors
+    the tick mark was not drawn.
+  </li>
+  <li>
+    Fixed <a>Link.getLinkPointFromPoint</a> for some cases where the start point was inside the target port shape.
+  </li>
+  <li>
+    One can now avoid invalidating the routes of other links that connect the same pair of ports
+    when links between them are added or removed, by setting <a>Link.curviness</a> to a number such as zero.
+  </li>
+</ul>
+
+<h4 id="2.1.35">Changes for 2.1.35</h4>
+<ul>
+  <li>
+    Fixed jitter that occurred when dragging between diagrams with a modifier key held down.
+  </li>
+  <li>
+    When dragging between diagrams, fixed the loss of routing of partly or fully disconnected reshaped links
+    that have TwoWay Bindings on "points", and fixed the positioning of multiple fully disconnected links.
+  </li>
+  <li>
+    Fixed a shadow-drawing bug that could occur when <a>Part.isShadowed</a> is false but <a>GraphObject.shadowVisible</a> is true.
+  </li>
+</ul>
+
+<h4 id="2.1.34">Changes for 2.1.34</h4>
+<ul>
+  <li>
+    Improved performance for off-screen Adornments and Parts.
+  </li>
+  <li>
+    Fixed exception regarding Workers when running in a web Worker.
+  </li>
+</ul>
+
+<h4 id="2.1.33">Changes for 2.1.33</h4>
+<ul>
+  <li>
+    Improved AvoidsNodes routing performance for many common cases.
+  </li>
+  <li>
+    Improved <a>ContextMenuTool.canStart</a> to return false for double or triple context clicks.
+  </li>
+</ul>
+
+<h4 id="2.1.32">Changes for 2.1.32</h4>
+<ul>
+  <li>
+    Fixed auto-scrolling not to do so in the directions in which <a>Diagram.allowHorizontalScroll</a> and
+    <a>Diagram.allowVerticalScroll</a> disallow it.
+  </li>
+  <li>
+    Fixed the positioning of nodes and links when an animation is stopped during a drag that operates on the same Parts.
+  </li>
+  <li>
+    Fixed <a>Diagram.makeSvg</a> where the SVG would not include <a>Picture.source</a> in headless browsers.
+  </li>
+  <li>
+    Fixed Diagram initialization when no Diagram DIV is specified, but setting some properties expected one (such as <a>Diagram.scrollMargin</a>).
+  </li>
+</ul>
+
+<h4 id="2.1.31">Changes for 2.1.31</h4>
+<ul>
+  <li>
+    Fixed a regression since 2.1.30 where the library might not load in React or Angular environments, and a TypeError would be thrown.
+  </li>
+  <li>
+    Fixed dragging of links connected with snapped nodes when the grid cell size was not an integer,
+    causing the links to slowly shift over time.
+  </li>
+  <li>
+    Fixed rendering of background in images drawn by <a>Diagram.makeImageData</a> when the whole page has been scaled to be less than 100%.
+  </li>
+  <li>
+    Fixed <a>Diagram.delayInitialization</a> when calling code that prompts the Diagram to update immediately afterwards.
+  </li>
+  <li>
+    Fixed premature routing of links in Groups that start off collapsed (with <a>Group.isSubGraphExpanded</a> set or bound to false).
+  </li>
+  <li>
+    Fixed animation that might revert some routes when the initial animation was turned off.
+  </li>
+  <li>
+    <a>Link.computeAdjusting</a> now only returns <a>Link,End</a> during animation only when routing is AvoidsNodes.
+  </li>
+  <li>
+    Fixed a regression since 2.1.29 where an <a>Overview</a> would not update with a newly set <a>Overview.observed</a> Diagram
+    and a newly displayed HTMLDivElement until some activity happened on that observed Diagram.
+  </li>
+</ul>
+
+<h4 id="2.1.30">Changes for 2.1.30</h4>
+<ul>
+  <li>
+    Changed the behavior of <a>GraphLinksModel</a> so that the use of a key of a non-existent node
+    can be resolved by adding a node with that key in a later transaction, not just in the same transaction.
+  </li>
+  <li>
+    Fixed routing of duplicate orthogonal links between ports with "...Side" Spots to avoid producing little loops
+    when the ports are close to each other.
+  </li>
+  <li>
+    Fixed <a>ContextMenuTool</a> to automatically stop running if the newly shown context menu is
+    a not-<a>GraphObject.visible</a> <a>Adornment</a>.
+  </li>
+  <li>
+    Fixed exception on expanding a <a>Group</a> whose member nodes had partly disconnected links.
+  </li>
+</ul>
+
+<h4 id="2.1.29">Changes for 2.1.29</h4>
+<ul>
+  <li>
+    Overviews now wait for the Diagram to draw first before attempting to draw.
+    This solves timing issues with <a>Diagram.delayInitialization</a>.
+  </li>
+  <li>
+    Fixed delays in updating the <a>Link.geometry</a> after changing properties such as <a>Link.corner</a>.
+  </li>
+  <li>
+    Fixed setting <a>Diagram.scrollMargin</a> during Diagram initialization, which would interrupt the initial transaction.
+  </li>
+</ul>
+
+<h4 id="2.1.28">Changes for 2.1.28</h4>
+<ul>
+  <li>
+    Added the <a>Diagram.ensureBounds</a> method.
+    Like <a>Part.ensureBounds</a>, this is useful when you need the document bounds computed immediately.
+    It is rare that you will need to call either method, because the normal updating process will
+    perform the computations for you as part of a transaction, asynchronously.
+  </li>
+  <li>
+    Fixed some parsing issues when using <a>Geometry.parse</a> or <a>Shape.geometryString</a> with SVG arcs.
+  </li>
+  <li>
+    Fixed the <a>Picture.source</a> setter from failing in non-DOM environments.
+  </li>
+  <li>
+    Fix for DOM-less environments that do not have <code>setImmediate</code> defined.
+  </li>
+  <li>
+    Fix for Link routing when connecting to the edge of an arc segment.
+  </li>
+</ul>
+
+<h4 id="2.1.27">Changes for 2.1.27</h4>
+<ul>
+  <li>
+    Fixed the routing of links connected with nodes that are members of expanded groups inside collapsed groups.
+  </li>
+  <li>
+    Fixed some Shapes in Link Selection Adornments inheriting their <code>strokeWidth</code> from the Link.
+    Only the main path Shapes of Link "Selection" Adornments with a <code>strokeWidth</code> of 0 will inherit
+    the <code>strokeWidth</code> from the adorned <a>Link.path</a> Shape.
+  </li>
+  <li>
+    Fixed changing <a>Picture.source</a> back to an empty string not to throw an unnecessary error.
+  </li>
+</ul>
+
+<h4 id="2.1.26">Changes for 2.1.26</h4>
+<ul>
+  <li>
+    Added a <code>ResizeObserver</code> to automatically detect changes in the size of the
+    HTMLDivElement (the <a>Diagram.div</a>) in recent browsers.
+    You will still need to call <a>Diagram.requestUpdate</a> when running in older browsers or in Internet Explorer.
+  </li>
+  <li>
+    Added the <a>ResizingTool.dragsMembers</a> property, for controlling whether resizing a
+    <a>Group</a> may move its <a>Group.memberParts</a> if it has no <a>Placeholder</a>.
+  </li>
+  <li>
+    Fixed regression since 2.1.24 causing some diagrams not to be drawn even after calling <a>Diagram.requestUpdate</a>.
+  </li>
+  <li>
+    Fixed some cases of finding the nearest intersection point of Bezier curves with a straight finite line.
+  </li>
+</ul>
+
+<h4 id="2.1.25">Changes for 2.1.25</h4>
+<ul>
+  <li>
+    Added the <a href="samples/connectionBoxNode.html">Connection Box Node</a> sample,
+    showing nodes that allow links between ports within a node.
+  </li>
+  <li>
+    In order to avoid possible errors caused by loading the GoJS library more than once,
+    an Error is thrown when a second load is detected, even if the version number is the same.
+    This helps avoid problems where there are multiple definitions for each of the classes, causing errors such as:
+    <code>Error: Unknown type of binding target: Node#241</code>, where the object is a GoJS <a>Node</a>,
+    but not the same GoJS Node class as the code expects.
+    It also helps avoid situations when both the release library and the debug library are loaded.
+  </li>
+  <li>
+    Fixed raising an extraneous <a>Diagram.mouseOver</a> event during initialization.
+  </li>
+  <li>
+    Fixed a regression since 2.1.0 that would prevent a Diagram or Overview from re-scaling or aligning when its DIV changed size.
+  </li>
+  <li>
+    Fixed invalidating routes of external links when nested groups change their visibility in ways
+    other than expanding trees or subgraphs.
+  </li>
+  <li>
+    Fixed <a>Model.mergeNodeDataArray</a>, <a>GraphLinksModel.mergeLinkDataArray</a>, and <a>Model.applyIncrementalJson</a>
+    to set known properties, eg. <a>GraphLinksModel.nodeGroupKeyProperty</a>, even when the property is not present on the new data.
+  </li>
+</ul>
+
+<h4 id="2.1.24">Changes for 2.1.24</h4>
+<ul>
+  <li>
+    Added the <a href="samples/multiColorLinks.html">Multi-color Links</a> sample,
+    showing links whose paths can be stroked with multiple colors specified in an Array
+    as the value of the link's <code>data.colors</code>.
+  </li>
+  <li>
+    Associating a <a>Diagram</a> instance with an HTMLDivElement now causes that Div element to get two new properties:
+    "goDiagram" to refer to that Diagram instance, and "go" to refer to the "go" namespace if it exists.
+    This makes it easier to examine or set Diagram properties or to call Diagram methods or methods on GraphObjects
+    in existing apps without access to the app's source code.
+  </li>
+  <li>
+    Fixed using subclasses of <a>GraphLinksModel</a> or <a>TreeModel</a>.
+  </li>
+  <li>
+    Fixed <a>AnimationTrigger</a>s incorrectly starting when <a>AnimationManager.isEnabled</a> is set to <code>false</code>.
+  </li>
+  <li>
+    Fixed extraneous Transaction <a>ChangedEvent</a>s when modifying a group invalidated a layout.
+  </li>
+</ul>
+
+<h4 id="2.1.23">Changes for 2.1.23</h4>
+<ul>
+  <li>
+    Added the <a href="extensions/ArrangingLayout.js" target="_blank">Arranging Layout</a> extension,
+    demonstrated in the <a href="extensions/Arranging.html" target="_blank">Arranging</a> sample.
+    This layout is basically a layout of layouts, so that you can have a <a>CircularLayout</a> of <a>CircularLayout</a>s,
+    as shown in the sample, or a <a>PackedLayout</a> of <a>TableLayout</a>s, or whatever.
+    The <a>ArrangingLayout</a> also has a third layout that is used to position nodes not arranged by the main layout.
+    This is normally a <a>GridLayout</a> that only positions singleton (disconnected) nodes.
+  </li>
+  <li>
+    Improved the <a>ParallelLayout</a> extension and rewrote the
+    <a href="samples/flowgrammer.html" target="_blank">Flowgrammer</a> sample to use that <b>ParallelLayout</b>.
+  </li>
+  <li>
+    Fixed <a>UndoManager</a> sometimes adding a duplicate "Layout" transaction to the <a>UndoManager.history</a>.
+  </li>
+</ul>
+
+<h4 id="2.1.22">Changes for 2.1.22</h4>
+<ul>
+  <li>
+    Added the <a href="extensions/RescalingTool.js" target="_blank">Rescaling Tool</a> extension,
+    demonstrated in the <a href="extensions/Rescaling.html" target="_blank">Rescaling</a> sample.
+    This tool modifies the <a>GraphObject.scale</a> property,
+    unlike the <a>ResizingTool</a> which modifies the <a>GraphObject.desiredSize</a> property.
+  </li>
+  <li>
+    Improved performance of <a>Model.mergeNodeDataArray</a>, <a>GraphLinksModel.mergeLinkDataArray</a>, and <a>Model.toIncrementalData</a>.
+    The merge methods require that references are not shared between the the GoJS model and the external data provided and will now make deep copies
+    of any new data objects before adding them to the model. This means <a>Model.cloneDeep</a> doesn't need to be called on the arrays passed in,
+    as the merge methods will make the necessary calls.
+  </li>
+  <li>
+    Fixed `go-module.js` to work when treated as an ES6 module in Node.js.
+    At the same time we have added `go.mjs` and `go-debug.mjs` as copies of `go-module.js` and `go-debug-module.js`.
+    For compatibility the kit will contain both sets of files.
+  </li>
+  <li>
+    Fixed automatically performing layouts of outer groups after inner nested groups changed size.
+  </li>
+</ul>
+
+<h4 id="2.1.21">Changes for 2.1.21</h4>
+<ul>
+  <li>
+    Added the <a href="extensions/SwimLaneLayout.js" target="_blank">Swim Lane Layout</a> extension,
+    demonstrated in the <a href="extensions/SwimLaneLayout.html" target="_blank">Swim Lane Layout</a> sample.
+    This layout is a version of <a>LayeredDigraphLayout</a> that positions each node in the lane in which it is supposed to be.
+  </li>
+  <li>
+    Fixed parts that have their location or position set when not in the Diagram.
+    This issue affected temporary parts, such as Adornments created by Tools that were repeatedly added and removed from the Diagram.
+  </li>
+  <li>
+    Fixed ordering of links on a <a>Spot,TopSide</a> or <a>Spot,BottomSide</a> port when linking with a node to the right.
+  </li>
+  <li>
+    Fixed some scaling animations when <a>Diagram.autoScale</a> is set.
+  </li>
+</ul>
+
+<h4 id="2.1.20">Changes for 2.1.20</h4>
+<ul>
+  <li>
+    Fixed <a>GraphLinksModel.setLabelKeysForLinkData</a> sometimes disassociating a link's label nodes that existed in both the old and new array.
+  </li>
+  <li>
+    Fixed the recording of model changes bound to a Part's <code>position</code> or <code>location</code>, where they may not have been recorded
+    in the UndoManager when modifying the <code>position</code>, <code>location</code>, or <code>desiredSize</code>.
+    This also fixes a regression from 2.1.14.
+  </li>
+  <li>
+    Fixed <a>LinearGradient</a> painting when used as a <a>Shape.stroke</a>.
+    This drawing issue was most apparent when the Shape's geometry was one-dimensional.
+  </li>
+  <li>
+    Fixed warning messages in Chrome about passive touch event listeners.
+  </li>
+  <li>
+    Fixed JumpOver and AvoidsNodes issues where ongoing animations might stop them from updating.
+  </li>
+</ul>
+
+<h4 id="2.1.19">Changes for 2.1.19</h4>
+<ul>
+  <li>
+    Fixed changing <a>Placeholder.padding</a> to remeasure its <a>Group</a> or <a>Adornment</a>.
+  </li>
+  <li>
+    Fixed <a>Diagram.initialPosition</a> and <a>Diagram.initialScale</a> sometimes not showing scrollbars on initialization.
+  </li>
+  <li>
+    Fixed not recording a transaction that was empty until a "CommittingTransaction" Transaction-type <a>ChangedEvent</a>
+    caused some <a>ChangedEvent</a>s to made, a regression from 2.1.16.
+  </li>
+</ul>
+
+<h4 id="2.1.18">Changes for 2.1.18</h4>
+<ul>
+  <li>
+    Added the <a href="samples/belts.html">Belts and Rollers</a> sample,
+    showing belts or chains wending around rollers or gears.
+  </li>
+  <li>
+    Fixed finding a node by key after undoing a call to <a>Model.setKeyForNodeData</a>.
+  </li>
+  <li>
+    Fixed Diagram initialization without DIVs or with delayed initialization,
+    where setting some properties like <a>Diagram.scaleComputation</a> would cause measuring errors.
+  </li>
+  <li>
+    Improved handling of numeric large arc flag values when creating SVG arc <a>PathSegment</a>s via <a>PathSegment.constructor</a>.
+  </li>
+  <li>
+    Fixed the TypeScript declaration for <a>GraphObject,make</a> to handle <a>AnimationTrigger</a>s.
+  </li>
+</ul>
+
+<h4 id="2.1.17">Changes for 2.1.17</h4>
+<ul>
+  <li>
+    Added the <a href="samples/radialAdornment.html">Radial Adornment Buttons</a> sample,
+    showing a selection <a>Adornment</a>, only on one node, that is like a context menu
+    with buttons arranged in a circle around the selected node.
+  </li>
+  <li>
+    Added the <a href="samples/donutCharts.html">Donut Charts</a> sample,
+    showing a simple circular bar chart in each node.
+  </li>
+  <li>
+    Fixed exporting the <a>Picture.reloadSource</a> and <a>Picture.redraw</a> methods.
+  </li>
+  <li>
+    Fixed the <a>LinkingBaseTool.temporaryFromPort</a> and <a>LinkingBaseTool.temporaryToPort</a> property setters
+    to replace the port of the corresponding temporary node.  This allows customization of a <a>LinkingTool</a>
+    by setting either or both of those two properties.
+  </li>
+  <li>
+    Fixed <a>Diagram.makeImage</a> with a Picture SVG data URI source, in the same manner as in 2.1.16.
+  </li>
+  <li>
+    Fixed undo of a <a>Shape.geometry</a> setting, after its <a>GraphObject.desiredSize</a> had been set.
+    This particular sequence of events was discovered in the use of the <a>GeometryReshapingTool</a> extension.
+  </li>
+</ul>
+
+<h4 id="2.1.16">Changes for 2.1.16</h4>
+<ul>
+  <li>
+    Added the <a href="samples/animatedFocus.html">Animated Focus</a> sample,
+    which demonstrates how to scroll to a node and really make it obvious where the node is
+    and what it looks like.
+  </li>
+  <li>
+    Added the <a href="samples/addToPalette.html">Add To Palette</a> sample,
+    which allows the user to add items from the palette by selecting a node,
+    customizing it, and then executing a command to copy it to the palette's model.
+    The user can also remove selected items from the palette via a command,
+    even though <a>Palette.isReadOnly</a> is true.
+  </li>
+  <li>
+    Fixed <a>Diagram.makeImage</a> when a Picture has an SVG source that has a different size than its viewbox.
+    In some browsers the SVGs had been drawn with the incorrect aspect ratio.
+  </li>
+  <li>
+    Fixed <a>Diagram.delayInitialization</a> incorrectly resetting the <a>Diagram.position</a> when animation is enabled.
+  </li>
+</ul>
+
+<h4 id="2.1.15">Changes for 2.1.15</h4>
+<ul>
+  <li>
+    Added the <a href="samples/singlePage.html">Single Page Diagram</a> sample,
+    demonstrating how to show a sheet of paper behind the diagram and how to limit
+    dragging and resizing to stay within the margins of the page.
+  </li>
+  <li>
+    Fixed label TextBlocks in <a href="intro/graduatedPanels.html">Graduated Panels</a> not respecting their assigned <a>GraphObject.angle</a>.
+    The angle will now be used when the label's <a>GraphObject.segmentOrientation</a> is <a>Link.None</a>, <a>Link.OrientAlong</a>,
+    or <a>Link.OrientUpright</a>.
+  </li>
+  <li>
+    Fixed expand and collapse animations, where collapsed objects would temporarily receive NaN locations.
+  </li>
+</ul>
+
+<h4 id="2.1.14">Changes for 2.1.14</h4>
+<ul>
+  <li>
+    Added the <a href="samples/blockEditor.html">Simple Block Editor</a> sample,
+    demonstrating how to let users easily build block diagrams.
+  </li>
+  <li>
+    Changing <a>Link.fromShortLength</a> or <a>Link.toShortLength</a> no longer invalidates the link's route.
+  </li>
+  <li>
+    Improved the corner curves of orthogonal links when needing to make consecutive turns within double the corner radius.
+  </li>
+  <li>
+    Fixed an incorrect optimization introduced in 2.1.13 updating initial scrollbars when animating.
+  </li>
+  <li>
+    Fixed undo and redo of <a>ResizingTool</a> operations when the <a>Part.locationSpot</a> is not TopLeft.
+  </li>
+</ul>
+
+<h4 id="2.1.13">Changes for 2.1.13</h4>
+<ul>
+  <li>
+    Fixed the cursor shown during a drag in an <a>Overview</a> if some external HTML element changed the cursor.
+  </li>
+  <li>
+    Fixed <a>Diagram.makeSvg</a> when rendering a fill or a stroke that is translucent not to make the opacity too small.
+  </li>
+  <li>
+    Added wait spinners to three of the "Virtualized" samples:
+    <a href="samples/virtualized.html" target="_blank">Virtualized</a>,
+    <a href="samples/virtualizedForceLayout.html" target="_blank">VirtualizedForceDirectedLayout</a>,
+    <a href="samples/virtualizedTreeLayout.html" target="_blank">VirtualizedTreeLayout</a>.
+    These use an image rotated using CSS animation that is positioned in front of the Diagram.
+  </li>
+</ul>
+
+<h4 id="2.1.12">Changes for 2.1.12</h4>
+<ul>
+  <li>
+    Added the <a href="samples/controlGauges.html">Meter and Gauge Controls</a> sample,
+    demonstrating several different kinds of meter and gauge instruments whose values
+    can also be modified by the user by dragging their indicators.
+  </li>
+  <li>
+    Added the <a href="samples/productionEditor.html">Production process editor</a> sample,
+    which edits diagrams that can be shown by the
+    <a href="samples/productionProcess.html">Production process</a> sample.
+  </li>
+  <li>
+    Added the <a>SnapLinkReshapingTool.avoidsNodes</a> property in the extensions directories.
+  </li>
+</ul>
+
+<h4 id="2.1.11">Changes for 2.1.11</h4>
+<ul>
+  <li>
+    Fixed "Grid" Panels to ignore the order of shapes in the panel when considering whether a larger <a>Shape.interval</a>
+    shape should suppress a smaller interval shape, or should be suppressed by a larger interval shape.
+    Changed "Grid" Panels to allow multiple shapes with the same <a>Shape.interval</a> to be drawn in the same orientation
+    (horizontal or vertical).
+  </li>
+  <li>
+    Fixed documentation by undocumenting the useless <a>AnimationManager.animationReasons</a> property that was accidentally documented.
+    See the updated documentation for <a>AnimationManager.canStart</a>.
+  </li>
+  <li>
+    Fixed <a>Brush.isDark</a> sometimes using an incorrect ordering of <a>Brush.colorStops</a>
+    when determining darkness near the middle of a Brush.
+  </li>
+</ul>
+
+<h4 id="2.1.10">Changes for 2.1.10</h4>
+<ul>
+  <li>
+    Added <a>DrawCommandHandler.pullToFront</a> and <a>DrawCommandHandler.pushToBack</a> commands in the extensions directories.
+  </li>
+</ul>
+
+<h4 id="2.1.9">Changes for 2.1.9</h4>
+<ul>
+  <li>
+    Fixed breadth computations for some cases of <a>TreeLayout.arrangement</a> of separate trees
+    when <a>TreeLayout.compaction</a> is <code>go.TreeLayout.CompactionNone</code>.
+  </li>
+  <li>
+    Fixed type declarations of <a>Binding.converter</a> and <a>Binding.backConverter</a>
+    to return <code>any</code> instead of <code>void</code>.
+  </li>
+</ul>
+
+<h4 id="2.1.8">Changes for 2.1.8</h4>
+<ul>
+  <li>
+    Added the <a href="samples/gameOfLife.html">Game of Life cellular automation</a> sample.
+  </li>
+  <li>
+    You can improve the performance of an <a>Overview</a> that is observing a large diagram with a visible <a>Diagram.grid</a>
+    by setting <a>Overview.drawsTemporaryLayers</a> to false.
+  </li>
+  <li>
+    Improved the behavior from 2.1.7 when trying to open text editors in multiple diagrams.
+    A new text editor can be started only if the previous one was able to be accepted.
+    If <a>TextBlock.textValidation</a> or <a>TextEditingTool.textValidation</a> fails,
+    focus remains in that older editor and a new one cannot be started.
+  </li>
+  <li>
+    Fixed exception during copy-dragging when some parts are not <a>Part.copyable</a>.
+  </li>
+</ul>
+
+<h4 id="2.1.7">Changes for 2.1.7</h4>
+<ul>
+  <li>
+    Added the <a href="extensionsJSM/PackedHierarchy.html">Packed Hierarchy</a> sample,
+    which demonstrates a custom <a>PackedLayout</a> for nested circular groups.
+  </li>
+  <li>
+    Added an optional argument to <a>Diagram.clearSelection</a>, and allowed that method to be overridden.
+  </li>
+  <li>
+    The <a>TextEditingTool</a> now only allows one active text editor globally, instead of one per Diagram.
+    This avoids some focus problems in various browsers.
+  </li>
+</ul>
+
+<h4 id="2.1.6">Changes for 2.1.6</h4>
+<ul>
+  <li>
+    The <code>release/go-module.js</code> file now exports every class, so that you can import only specific classes, instead of <code>go</code>.
+    For example: <code>import { Diagram, Node, Link, Point, Shape, TextBlock } from ...</code>.
+  </li>
+  <li>
+    Added a sample demonstrating generating a PDF file for a Diagram, in the <code>projects/pdf</code> subdirectory.
+    The sample is at <a href="projects/pdf/minimalPDF.html" target="_blank">minimalPDF</a>.
+  </li>
+  <li>
+    Fixed <a>AnimationTrigger</a>s erroneously starting when dragging and dropping Parts from another Diagram or Palette.
+  </li>
+  <li>
+    Fixed <a>LinkingTool</a> not deselecting other parts when a new link is created.
+  </li>
+</ul>
+
+<h4 id="2.1.5">Changes for 2.1.5</h4>
+<ul>
+  <li>
+    Added <a href="extensionsJSM/VirtualizedPacked.html">VirtualizedPacked</a> sample,
+    which demonstrates a custom layout for large graphs of nested groups,
+    defined in <a href="extensionsJSM/VirtualizedPackedLayout.ts">VirtualizedPackedLayout.ts</a>.
+    (Source is TS only)
+  </li>
+  <li>
+    Fixed setting a node key reference in either a node or link via <a>GraphLinksModel.setGroupKeyForNodeData</a>,
+    <a>GraphLinksModel.setFromKeyForLinkData</a>, or <a>GraphLinksModel.setToKeyForLinkData</a> where it could fail to resolve
+    if the node did not yet exist. This issue did not exist during typical model loading.
+  </li>
+  <li>
+    Fixed a regression since 2.1.1 with <a>Diagram.clear</a> failing to clear internal Parts lists (like <a>Diagram.nodes</a>).
+  </li>
+</ul>
+
+<h4 id="2.1.4">Changes for 2.1.4</h4>
+<ul>
+  <li>
+    Added <a>Link.computeAdjusting</a> to conditionally change the value of <a>Link.adjusting</a> used. As a new default,
+    links will use the adjusting value <a>Link,End</a> during animation. <a>Link.computeAdjusting</a> can be overridden to change this behavior.
+  </li>
+  <li>
+    Added <a>Geometry.getPointAlongPath</a>, <a>Geometry.getAngleAlongPath</a>, and <a>Geometry.getFractionForPoint</a>.
+    These methods can be used to find a point or angle for a given fractional distance along a Geometry's path,
+    or to find the fractional distance along the Geometry's path given a nearby point.
+  </li>
+  <li>
+    Setting <a>GraphObject.segmentIndex</a> to NaN, which was previously an error,
+    will now treat the entire link path as the segment for the purpose of <a>GraphObject.segmentFraction</a>.
+    This allows for using fractional distances along the entire link rather than just one segment.
+  </li>
+  <li>
+    Fixed object picking during Diagram's InitialLayoutCompleted DiagramEvent.
+  </li>
+  <li>
+    Fixed GoCloudStorage where a null defaultModel would fail.
+  </li>
+  <li>
+    Fixed <a>Panel.graduatedValueForPoint</a> in cases where the main shape was a diagonal line
+    and the provided point didn't fall on the line.
+  </li>
+</ul>
+
+<h4 id="2.1.3">Changes for 2.1.3</h4>
+<ul>
+  <li>
+    Fixed a regression from 2.0.0 with AvoidsNodes links improperly re-routing when using the DraggingTool.
+  </li>
+  <li>
+    Fixed a undo (redo) bug with <a>AnimationTrigger</a>s that used location or position on Parts.
+  </li>
+  <li>
+    Improved routing of duplicate links that have <a>Link.adjusting</a> set to a value other than None and have
+    more than the standard number of points in their route.
+  </li>
+</ul>
+
+<h4 id="2.1.2">Changes for 2.1.2</h4>
+<ul>
+  <li>
+    Fixed a regression in 2.1.1 with the timing of <code>InitialAnimationStarting</code> that would prevent custom
+    initial animations.
+  </li>
+  <li>
+    CTRL + Mouse-wheel will still stop the event from bubbling,
+    even if <a>CommandHandler.canIncreaseZoom</a> or <a>CommandHandler.canDecreaseZoom</a> return false.
+    These are potentially false if a <a>Diagram.minScale</a> or <a>Diagram.maxScale</a> are set.
+    This change stops the entire page from accidentally zooming during a zoom-wheel operation.
+  </li>
+  <li>
+    Fixed a measuring bug with Link Geometry when the Link is smaller than the <a>Link.toShortLength</a> or <a>Link.fromShortLength</a>.
+  </li>
+</ul>
+
+<h4 id="2.1.1">Changes for 2.1.1</h4>
+<ul>
+  <li>
+    Fixed updating of <a>Adornment</a>s when there are <a>Binding</a>s from <a>Model.modelData</a>
+    and that shared object has been modified by calling <a>Model.set</a>.
+  </li>
+  <li>
+    Improved performance when replacing <a>Diagram.model</a> when cleaning up the old model,
+    which had infrequently resulted in obscure warnings in debug mode about <a>Node.isTreeLeaf</a>.
+  </li>
+  <li>
+    Fixes for loading Models with serialized EnumValues.
+  </li>
+  <li>
+    Performance improvements for concurrent animations.
+  </li>
+  <li>
+    Fixes for consistency of animation state.
+    This includes modifying when <code>AnimationStarting</code> and <code>InitialAnimationStarting</code> are
+    called,
+    and fixes when default animations are stopped and another is immediately started, such as when loading a new
+    model in the middle of animation.
+  </li>
+  <li>
+    Fixed <a>Model.fromJson</a> loading models with serialized EnumValues.
+  </li>
+  <li>
+    Improved showing non-default cursors when dragging between diagrams.
+  </li>
+  <li>
+    Fixed the operation of <a>Diagram.handlesDragDropForTopLevelParts</a> when dragging on the elements of a <a>Group</a>.
+  </li>
+  <li>
+    Fixed <a>Diagram.scrollHorizontalLineChange</a> and <a>Diagram.scrollVerticalLineChange</a> would
+    not affect scrolling size in some browsers.
+  </li>
+  <li>
+    Fixed AvoidsNodes Links routing in nested groups.
+  </li>
+</ul>
+
+<h4 id="2.1.0">Other Changes for 2.1.0:</h4>
+<p>
+  See the major changes <a href="#2.1">above</a>.
+</p>
+<ul>
+  <li>
+    Added <a>DoubleTreeLayout</a> to the extensions and extensionsJSM directories. This is now used by the
+    <a href="samples/doubleTree.html">Double Tree</a> sample.
+  </li>
+  <li>
+    Updated the sequencing of "ChangingSelection" and "ChangedSelection" <a>DiagramEvent</a>s to be outside of
+    transactions for commands and tools.
+    Exceptions include "ChangingSelection" being called during "Drag" and "Linking" operations when drag-copying or
+    inserting a link.
+    With "ChangedSelection" occuring after a transaction completes, any changes will be complete and can be used in
+    the listener.
+  </li>
+  <li>
+    <a>CommandHandler.zoomToFit</a> now animates by default.
+  </li>
+  <li>
+    Improved the <a>ContextMenuTool.defaultTouchContextMenu</a>'s "Paste" command to use the <a>ContextMenuTool.mouseDownPoint</a>
+    rather than the <a>Diagram.lastInput</a>'s <a>InputEvent.documentPoint</a>.
+  </li>
+  <li>
+    Added new property, <a>Diagram.opacity</a>. This may be useful for fade-in/out animations, or visual indication
+    of a disabled Diagram.
+  </li>
+  <li>
+    Added new method, <a>Diagram.findLinkForKey</a>, which will look for a link corresponding to a model's link
+    data object's unique key.
+    This will only return a link when using a <a>GraphLinksModel</a> with <a>GraphLinksModel.linkKeyProperty</a>
+    set to a non-empty string.
+  </li>
+  <li>
+    <a>Model.applyIncrementalJson</a> now throws an error if model properties (eg. nodeKeyProperty) included in the
+    JSON don't match the existing model.
+    This check only includes properties included in the output from <a>Model.toIncrementalJson</a>.
+  </li>
+  <li>
+    Added new methods, <a>Picture.reloadSource</a>, which reloads a Picture source in case the file on the server has
+    changed,
+    and <a>Picture.redraw</a> which redraws the picture, and can be useful to update the Picture if the source is
+    backed by an HTML Canvas or HTML Video Element.
+  </li>
+  <li>
+    Added new sample: <a href="samples/svgDataUrl.html" target="_blank">SVG Data URL</a> - Export SVG with Base64 hrefs instead
+    of the <a>Picture.source</a> URL.
+  </li>
+</ul>
+
+
+<hr />
+
+
+<h4>Changes for 2.0 are <a href="../2.0.21/changelog.html">here</a>.</h4>
+
+<h4>Changes for 1.* are <a href="../1.8.38/changelog.html">here</a>.</h4>
+
+      </div>
+    </div>
+  
+  <div class="bg-nwoods-primary">
+    <section class="max-w-screen-lg text-white container mx-auto py-2 px-12">
+      <p id="version" class="leading-none mb-2 my-4">GoJS</p>
+    </section>
+  </div><footer class="bg-nwoods-primary text-white">
+  <div class="container max-w-screen-lg mx-auto  px-8">
+    <div class="w-full py-6">
+
+        <div class="max-w-screen-lg xl:max-w-screen-xl mx-auto px-4 sm:px-6 md:px-8">
+          <ul class="text-sm font-medium pb-6 grid grid-cols-2 sm:grid-cols-3 gap-y-10">
+            <li class="list-none row-span-2">
+              <h2 class="text-base font-semibold tracking-wide">GoJS</h2>
+              <ul class="list-none space-y-4 md:space-y-1 px-0">
+                <li>
+                  <a href="./samples/index.html">Samples</a>
+                </li>
+                <li>
+                  <a href="./learn/index.html">Learn</a>
+                </li>
+                <li>
+                  <a href="./intro/index.html">Intro</a>
+                </li>
+                <li>
+                  <a href="./api/index.html">API</a>
+                </li>
+                <li>
+                  <a href="./changelog.html">Changelog</a>
+                </li>
+                <li>
+                  <a href="https://github.com/NorthwoodsSoftware/GoJS">GitHub</a>
+                </li>
+              </ul>
+            </li>
+            <li class="list-none row-span-2">
+              <h2 class="text-base font-semibold tracking-wide">Support</h2>
+              <ul class="list-none space-y-4 md:space-y-1 px-0">
+                <li>
+                  <a href="https://www.nwoods.com/contact.html"
+                  target="_blank" rel="noopener" onclick="getOutboundLink('https://www.nwoods.com/contact.html', 'contact');">Contact</a>
+                </li>
+                <li>
+                  <a href="https://forum.nwoods.com/c/gojs">Forum</a>
+                </li>
+                <li>
+                  <a href="https://www.nwoods.com/app/activate.aspx?sku=gojs">Activate</a>
+                </li>
+                <li>
+                  <a href="https://www.nwoods.com/sales/index.html"
+                  target="_blank" rel="noopener" onclick="getOutboundLink('https://www.nwoods.com/sales/index.html', 'buy');">Buy</a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/channel/UC9We8EoX596-6XFjJDtZIDg">Videos</a>
+                </li>
+              </ul>
+            </li>
+            <li class="list-none row-span-2">
+              <h2 class="text-base font-semibold tracking-wide">Company</h2>
+              <ul class="list-none space-y-4 md:space-y-1 px-0">
+                <li>
+                  <a target="_blank" href="https://www.nwoods.com">Northwoods</a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://www.nwoods.com/about.html">About Us</a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://www.nwoods.com/contact.html">Contact Us</a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://www.nwoods.com/consulting.html">Consulting</a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://twitter.com/northwoodsgo">Twitter</a>
+                </li>
+
+              </ul>
+            </li>
+          </ul>
+
+
+      <p class="text-sm text-gray-100 md:mb-6">
+        Copyright 1998-2022 <a class="text-white" href="https://www.nwoods.com">Northwoods Software</a>
+      </p>
+    </div>
+  </div>
+</footer>  </body>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-1506307-5"></script> 
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date()); gtag('config', 'UA-1506307-5');
+  var getOutboundLink = function(url, label) {
+    gtag('event', 'click', {
+      'event_category': 'outbound',
+      'event_label': label,
+      'transport_type': 'beacon'
+    });
+  }
+
+  // topnav
+  var topButton = document.getElementById("topnavButton");
+  var topnavList = document.getElementById("topnavList");
+  topButton.addEventListener("click", function() {
+    this.classList.toggle("active");
+    topnavList.classList.toggle("hidden");
+    document.getElementById("topnavOpen").classList.toggle("hidden");
+    document.getElementById("topnavClosed").classList.toggle("hidden");
+  });
+</script>
+  <script src="./assets/js/prism.js"></script>
+  <script src="./release/go.js"></script>
+  <script src="./assets/js/goDoc.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.go) {
+        var p = document.getElementById('ver');
+        if (p !== null) p.textContent = ("Version: " + go.version);
+        document.getElementById('version').textContent = "GoJS " + go.version;
+      }
+      if (window.goDoc) window.goDoc();
+    });
+  </script>
+</html>
