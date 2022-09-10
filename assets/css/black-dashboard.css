@@ -89,6 +89,7 @@ body {
   color: #525f7f;
   text-align: left;
   background-color: #dd9e0b;
+  
 }
 
 [tabindex="-1"]:focus {
@@ -297,6 +298,14 @@ button,
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
+  border-radius: 10px;
+  background-color: #000;
+  color: white;
+  color: #c9c9c9;font-family: 'Indie Flower', cursive;padding: 5px
+  /* style=";" */
+  /* border-radius: 10px; */
+  /* padding: 2px; */
+
 }
 
 button:not(:disabled),
@@ -16498,8 +16507,9 @@ h6 {
 }
 
 a {
-  color: #ba54f5;
-  font-weight: 300;
+  color: blue;
+  font-weight: 10;
+  font-size: 20px;
 }
 
 a:hover,
@@ -16660,7 +16670,8 @@ hr {
 }
 
 .table>tbody>tr>td {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: rgba(255, 0, 0, 0.7) !important;
+  font-size: 20px;
 }
 
 .table>tbody>tr>td .photo {
